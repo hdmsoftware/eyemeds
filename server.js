@@ -1,36 +1,29 @@
-'use strict';
-/**
- * Module dependencies.
- */
-var init = require('./config/init')(),
-	config = require('./config/config'),
-	mongoose = require('mongoose'),
-	chalk = require('chalk');
+// modules =================================================
 
-/**
- * Main application entry file.
- * Please note that the order of loading is important.
- */
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 
-// Bootstrap db connection
-var db = mongoose.connect(config.db, function(err) {
-	if (err) {
-		console.error(chalk.red('Could not connect to MongoDB!'));
-		console.log(chalk.red(err));
-	}
-});
+// configuration ===========================================
 
-// Init the express application
-var app = require('./config/express')(db);
+var db = require('./server/config/db');
 
-// Bootstrap passport config
-require('./config/passport')();
+var port = process.env.PORT || 8080;
 
-// Start the app by listening on <port>
-app.listen(config.port);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-// Expose app
+app.use(methodOverride('X-HTTP-Method-Override'));
+
+app.use(express.static(__dirname + '/client'));
+
+require('./server/config/routes')(app);
+
+app.listen(port);
+
+console.log('Server is listening on port ' + port);
+
 exports = module.exports = app;
 
-// Logging initialization
-console.log('MEAN.JS application started on port ' + config.port);
+
