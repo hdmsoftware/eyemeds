@@ -6,10 +6,12 @@ app.config(function($stateProvider, $urlRouterProvider){
 
     $stateProvider
         .state('home', {
-            url: "/",
-            templateUrl: "views/home.html"
+            url: '/',
+            templateUrl: 'views/home.html'
+        })
+        .state('error', {
+            url: '/error',
+            templateUrl: 'views/error.html'
         });
-
-
 
 });
