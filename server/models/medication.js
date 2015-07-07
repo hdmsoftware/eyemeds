@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var MedicineSchema = new Schema({
+var MedicationSchema = new Schema({
 
     brand: {type: String},
     generic: {type: String},
@@ -12,6 +12,6 @@ var MedicineSchema = new Schema({
 
 });
 
-var Medicine = mongoose.model('Medicine', MedicineSchema);
+var Medication = mongoose.model('Medication', MedicationSchema);
 
-exports.MedicineSchema = MedicineSchema;
+exports.MedicationSchema = MedicationSchema;
