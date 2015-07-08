@@ -24,5 +24,13 @@ angular.module('AniTheme', [
                 url: '/dashboard',
                 templateUrl: 'views/dashboard.html'
             })
+            .state('login', {
+                url: '/login',
+                templateUrl: 'views/login.html'
+            })
+            .state('signup', {
+                url: '/signup',
+                templateUrl: 'views/signup.html'
+            })
 
     });
