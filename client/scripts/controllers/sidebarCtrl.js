@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of AniTheme
  */
-angular.module('AniTheme').controller('sidenavCtrl', function($scope, $location){
+angular.module('EyemedsApp').controller('sidenavCtrl', function($scope, $location){
 	$scope.selectedMenu = 'dashboard';
 	$scope.collapseVar = 0;
 

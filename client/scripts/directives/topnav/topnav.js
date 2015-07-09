@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('AniTheme')
+angular.module('EyemedsApp')
 .directive('topnav',function(){
 		return {
 	    templateUrl:'scripts/directives/topnav/topnav.html?v='+window.app_version,

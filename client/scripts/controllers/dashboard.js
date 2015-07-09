@@ -1,13 +1,6 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name AniTheme.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of AniTheme
- */
-angular.module('AniTheme')
+angular.module('EyemedsApp')
   .controller('DashboardCtrl', function($scope, $state, $translate, $rootScope) {
 
     $scope.$state = $state;

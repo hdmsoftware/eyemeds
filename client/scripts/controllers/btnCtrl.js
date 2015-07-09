@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of AniTheme
  */
-angular.module('AniTheme').controller('ButtonsCtrl', function ($scope) {
+angular.module('EyemedsApp').controller('ButtonsCtrl', function ($scope) {
   $scope.singleModel = 1;
 
   $scope.radioModel = 'Middle';

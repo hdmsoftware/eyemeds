@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of AniTheme
  */
-angular.module('AniTheme').controller('piechartCtrl', ['$scope', function ($scope) {
+angular.module('EyemedsApp').controller('piechartCtrl', ['$scope', function ($scope) {
    
     $scope.options1 = {
         animate:{

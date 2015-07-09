@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of AniTheme
  */
-angular.module('AniTheme').controller('AccordionDemoCtrl', function ($scope) {
+angular.module('EyemedsApp').controller('AccordionDemoCtrl', function ($scope) {
   $scope.oneAtATime = true;
 
   $scope.groups = [

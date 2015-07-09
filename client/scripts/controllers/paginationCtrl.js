@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of AniTheme
  */
-angular.module('AniTheme').controller('PaginationDemoCtrl', function ($scope, $log) {
+angular.module('EyemedsApp').controller('PaginationDemoCtrl', function ($scope, $log) {
   $scope.totalItems = 64;
   $scope.currentPage = 4;
 

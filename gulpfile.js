@@ -4,6 +4,7 @@
 var gulp = require('gulp');
 var karma = require('karma').server;
 var argv = require('yargs').argv;
+var app = require('server.js').app;
 var $ = require('gulp-load-plugins')();
 
 gulp.task('default', function() {

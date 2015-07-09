@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of AniTheme
  */
-angular.module('AniTheme').controller('DropdownCtrl', function ($scope, $log) {
+angular.module('EyemedsApp').controller('DropdownCtrl', function ($scope, $log) {
   $scope.items = [
     'The first choice!',
     'And another choice for you.',

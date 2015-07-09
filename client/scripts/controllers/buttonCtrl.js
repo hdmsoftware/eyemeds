@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of AniTheme
  */
-angular.module('AniTheme')
+angular.module('EyemedsApp')
     .controller('progressCtrl', function($scope) {
 		[].slice.call( document.querySelectorAll( 'button.progress-button' ) ).forEach( function( bttn ) {
 			new ProgressButton( bttn, {

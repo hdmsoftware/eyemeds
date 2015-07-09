@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of AniTheme
  */
-angular.module('AniTheme').controller('AlertDemoCtrl', function ($scope) {
+angular.module('EyemedsApp').controller('AlertDemoCtrl', function ($scope) {
   $scope.alerts = [
     { type: 'danger', msg: 'Oh snap! Change a few things up and try submitting again.' },
     { type: 'info', msg: 'Ok! Not bad, but you can do better.' },

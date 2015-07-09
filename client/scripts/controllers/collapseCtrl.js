@@ -7,6 +7,6 @@
  * # MainCtrl
  * Controller of AniTheme
  */
-angular.module('AniTheme').controller('CollapseDemoCtrl', function ($scope) {
+angular.module('EyemedsApp').controller('CollapseDemoCtrl', function ($scope) {
   $scope.isCollapsed = false;
 });

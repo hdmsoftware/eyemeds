@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('AniTheme', [
+angular.module('EyemedsApp', [
 
         'ui.router',
         'pascalprecht.translate',

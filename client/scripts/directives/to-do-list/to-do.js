@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('AniTheme')
+angular.module('EyemedsApp')
 .directive('todolist',function(){
 		return {
 	    templateUrl:'scripts/directives/to-do-list/to-do.html?v='+window.app_version,

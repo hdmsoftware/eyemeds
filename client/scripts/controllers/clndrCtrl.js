@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of AniTheme
  */
-angular.module('AniTheme').controller('calendarCtrl', function ($scope) {
+angular.module('EyemedsApp').controller('calendarCtrl', function ($scope) {
    
    $scope.eventSources = [];
     

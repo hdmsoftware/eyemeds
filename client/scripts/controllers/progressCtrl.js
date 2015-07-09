@@ -7,7 +7,7 @@
  * # MainCtrl
  * Controller of AniTheme
  */
-angular.module('AniTheme').controller('ProgressDemoCtrl', function ($scope) {
+angular.module('EyemedsApp').controller('ProgressDemoCtrl', function ($scope) {
   $scope.max = 200;
 
   $scope.random = function() {

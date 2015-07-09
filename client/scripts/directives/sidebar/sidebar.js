@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('AniTheme')
+angular.module('EyemedsApp')
 	.directive('sidebar',function(){
 		return {
         templateUrl:'scripts/directives/sidebar/sidebar.html?v='+window.app_version,

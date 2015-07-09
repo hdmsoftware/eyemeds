@@ -9,7 +9,7 @@
 * # It also shows success or failure with check and cross FontAwesome icons
 */
 
-angular.module('AniTheme')
+angular.module('EyemedsApp')
 
 /**
 * A simple service to provide incremental values at every fixed interval

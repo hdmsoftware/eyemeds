@@ -1,37 +1,18 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name AniTheme.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of AniTheme
- */
-angular.module('AniTheme')
-  .controller('LoginCtrl', function($scope, $location, $timeout, $q) {
+angular.module('EyemedsApp').controller('LoginCtrl', ['$scope', '$location', '$q', 'UserService', function($scope, $location, $q, UserService){
 
-    $scope.submit = function() {
+	$scope.login = function(credentials) {
 
-      	return false;
+		UserService.login(credentials).then(function(response) {
 
-    }
+			console.log(response)
 
-    $scope.authenticate = function() {
 
-    	var defer = $q.defer();
+		});
 
-    	$timeout(function(){
+	}
 
-    		defer.resolve();
 
-    		$timeout(function(){
-    		   	$location.path('/dashboard/home');
-    		}, 600);
 
-    	}, 1100);
-
-    	return defer.promise;
-
-    }
-
-  });
+}]);

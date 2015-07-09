@@ -12,7 +12,9 @@
     "mongoose" : "~3.8.0",
     "body-parser" : "~1.4.2",
     "method-override" : "~2.0.2",
-    "crypto" : "~0.0.3"
+    "crypto" : "~0.0.3",
+    "passport" : "latest",
+    "passport-local": "latest"
   },
   "devDependencies": {
     "chai": "^2.1.0",
