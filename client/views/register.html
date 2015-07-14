@@ -3,41 +3,67 @@
         <div class="col-md-4 col-lg-4 col-md-offset-4 col-lg-offset-4">
             <img src="img/flat-avatar.png" class="user-avatar" />
             <h1>Eyemeds App</h1>
-            <form ng-submit="register(user)" novalidate>
+            <form name="registerForm" ng-submit="register(user)" novalidate>
                 <div class="form-content">
                     <div class="form-group">
-                        <input type="email" ng-model="user.email" class="form-control input-underline input-lg" placeholder="Email" required>
+                        <input type="email" name="email" ng-model="user.email" class="form-control input-underline input-lg" placeholder="Email" required>
+                        <div class="error-block" ng-show="registerForm.$submitted || registerForm.email.$touched">
+                            <span ng-show="registerForm.email.$error.required">Please, enter the email</span>
+                            <span ng-show="registerForm.email.$error.email">Please, enter the valid email</span>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" ng-model="user.name" class="form-control input-underline input-lg" placeholder="Name" required>
+                        <input type="text" name="name" ng-model="user.name" class="form-control input-underline input-lg" placeholder="Name" required>
+                        <div class="error-block" ng-show="registerForm.$submitted || registerForm.name.$touched">
+                            <span ng-show="registerForm.name.$error.required">Please, enter the name</span>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" ng-model="user.zipCode" class="form-control input-underline input-lg" placeholder="Zip code" required>
+                        <input type="text" name="zipCode" ng-model="user.zipCode" class="form-control input-underline input-lg" placeholder="Zip code" required ng-pattern=" /^(\d{5}(-\d{4})?|[A-Z]\d[A-Z] *\d[A-Z]\d)$/">
+                        <div class="error-block" ng-show="registerForm.$submitted || registerForm.zipCode.$touched">
+                            <span ng-show="registerForm.zipCode.$error.required">Please, enter the zipCode</span>
+                            <span ng-show="registerForm.zipCode.$error.pattern">Please, enter the zipCode in the right format</span>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" ng-model="user.state" class="form-control input-underline input-lg" placeholder="State" required>
+                        <input type="text" name="state" ng-model="user.state" class="form-control input-underline input-lg" placeholder="State" required>
+                        <div class="error-block" ng-show="registerForm.$submitted || registerForm.state.$touched">
+                            <span ng-show="registerForm.state.$error.required">Please, enter the state</span>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" ng-model="user.city" class="form-control input-underline input-lg" placeholder="City" required>
+                        <input type="text" name="city" ng-model="user.city" class="form-control input-underline input-lg" placeholder="City" required>
+                        <div class="error-block" ng-show="registerForm.$submitted || registerForm.city.$touched">
+                            <span ng-show="registerForm.city.$error.required">Please, enter the city</span>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="text" ng-model="user.address" class="form-control input-underline input-lg" placeholder="Address" required>
+                        <input type="text" name="address" ng-model="user.address" class="form-control input-underline input-lg" placeholder="Address" required>
+                        <div class="error-block" ng-show="registerForm.$submitted || registerForm.address.$touched">
+                            <span ng-show="registerForm.address.$error.required">Please, enter the address</span>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" ng-model="user.password" class="form-control input-underline input-lg" placeholder="Password" required>
+                        <input type="password" name="password" ng-model="user.password" class="form-control input-underline input-lg" placeholder="Password" required>
+                        <div class="error-block" ng-show="registerForm.$submitted || registerForm.password.$touched">
+                            <span ng-show="registerForm.password.$error.required">Please, enter the password</span>
+                        </div>
                     </div>
 
                     <div class="form-group">
-                        <input type="password" ng-model="user.confirmPassword" class="form-control input-underline input-lg" placeholder="Repeat password" required compare-to="user.password">
+                        <input type="password" name="confirmPassword" ng-model="user.confirmPassword" class="form-control input-underline input-lg" placeholder="Repeat password" required compare-to="user.password">
+                        <div class="error-block" ng-show="registerForm.$submitted || registerForm.confirmPassword.$touched">
+                            <span ng-show="registerForm.confirmPassword.$error.required">Please, confirm the password</span>
+                        </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded progress-login">Register</button>&nbsp;
+                <button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded progress-login" ng-disabled="registerForm.$invalid">Register</button>&nbsp;
                 <a ui-sref="login"><button type="submit" class="btn btn-white btn-outline btn-lg btn-rounded">Login</button></a>
             </form>
         </div>
