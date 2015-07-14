@@ -1,0 +1,95 @@
+<nav class="navbar topnav-navbar navbar-fixed-top" role="navigation">
+
+	<div class="navbar-header text-center">
+		<button type="button" class="navbar-toggle" ng-click="showMenu();" >
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	    </button>
+		<a class="navbar-brand" ui-sref="dashboard">Eyemeds App</a>
+	</div>
+	<div class="collapse navbar-collapse">
+		<form class="navbar-form navbar-left" role="search">
+			<span class="glyphicon glyphicon-search"></span>
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="">
+			</div>			
+		</form>
+		<ul class="nav navbar-nav pull-right navbar-right">	
+			<li class="dropdown color-picker" dropdown on-toggle="toggled(open)">
+	            <a href class="dropdown-toggle notoggle" dropdown-toggle>
+	                <span><i class="fa fa-circle"></i></span>
+	            </a>
+	            <ul class="dropdown-menu pull-right animated fadeIn" role="menu">
+	                <li class="padder-h-xs">
+	                    <table class="table color-swatches-table text-center no-m-b">
+	                        <tr>
+	                            <td class="text-center colorr">
+	                                <a href="javascript:;" ng-click="changeTheme('blue')" class="theme-picker">
+	                                    <i class="fa fa-circle blue-base"></i>
+	                                </a>
+	                            </td>
+	                            <td class="text-center colorr">
+	                                <a href="javascript:;" ng-click="changeTheme('green')" class="theme-picker">
+	                                    <i class="fa fa-circle green-base"></i>
+	                                </a>
+	                            </td>
+	                            <td class="text-center colorr">
+	                                <a href="javascript:;" ng-click="changeTheme('red')" class="theme-picker">
+	                                    <i class="fa fa-circle red-base"></i>
+	                                </a>
+	                            </td>
+	                        </tr>
+	                        <tr>
+	                         	<td class="text-center colorr">
+	                                <a href="javascript:;" ng-click="changeTheme('purple')" class="theme-picker">
+	                                    <i class="fa fa-circle purple-base"></i>
+	                                </a>
+	                            </td>
+	                            <td class="text-center colorr">
+	                                <a href="javascript:;" ng-click="changeTheme('midnight-blue')" class="theme-picker">
+	                                    <i class="fa fa-circle midnight-blue-base"></i>
+	                                </a>
+	                            </td>
+	                            <td class="text-center colorr">
+	                                <a href="javascript:;" ng-click="changeTheme('lynch')" class="theme-picker">
+	                                    <i class="fa fa-circle lynch-base"></i>
+	                                </a>
+	                            </td>
+	                        </tr>
+	                    </table>
+	                </li>
+	            </ul>
+	        </li>
+	        <li class="dropdown" dropdown on-toggle="toggled(open)">
+	        	<a href class="dropdown-toggle notoggle" dropdown-toggle>
+	                <span>{{ 'lang' | translate }}</span>
+	            </a>
+	        	<ul class="dropdown-menu lang pull-right animated fadeIn">
+					<li><a href="" ng-click="changeLanguage('en')">English</a></li>
+					<li><a href="" ng-click="changeLanguage('de')">Dutch</a></li>
+					<li><a href="" ng-click="changeLanguage('ur')">اردو</a></li>
+					<li><a href="" ng-click="changeLanguage('hn')">हिन्दी</a></li>
+				</ul>
+	        </li>
+			<li class="dropdown admin-dropdown" dropdown on-toggle="toggled(open)">
+				<a href class="dropdown-toggle" dropdown-toggle><img src="img/flat-avatar.png" class="topnav-img" alt=""> <span class="hidden-sm">{{user.name}}</span></a>
+				<ul class="dropdown-menu pull-right animated fadeIn">
+					<li><a ui-sref="profile">{{ 'profilee' | translate }}</a></li>
+					<li><a ng-click="logout()">{{ 'logout' | translate }}</a></li>
+				</ul>
+			</li>	
+		</ul>
+
+	</div>
+	<ul class="nav navbar-nav pull-right hidd">	
+		<li class="dropdown admin-dropdown" dropdown on-toggle="toggled(open)">
+			<a href class="dropdown-toggle animated fadeIn" dropdown-toggle><img src="img/flat-avatar.png" class="topnav-img" alt=""></a>
+			<ul class="dropdown-menu pull-right">
+				<li><a ui-sref="profile">{{ 'profilee' | translate }}</a></li>
+				<li><a ui-sref="login">{{ 'logout' | translate }}</a></li>
+			</ul>
+		</li>	
+	</ul>
+</nav>

@@ -1,30 +1,80 @@
-var User = require('../models/User').User;
+var User = require('../models/user').User;
+var jwt = require('jsonwebtoken');
+var config = require('../config/config.js');
 
-exports.login = function (req, res) {
+exports.register = function(req ,res){
 
-    console.log(req.body.email);
-    console.log(req.body.password);
+    var user = new User();
 
-    //var username = req.body.username,
-    //    password = req.body.password,
-    //    isAuthenticated = req.body.isAuthenticated;
-    //
-    //if(!isAuthenticated || isAuthenticated === 'false') {
-    //    User.authenticate(username, password, function (err, data) {
-    //        if (err) {
-    //            res.status(err.status).send(err.message);
-    //        }
-    //        req.session.user = {
-    //            fullname: data.fullname,
-    //            id: data.pmcId
-    //        };
-    //        res.send(req.session.user);
-    //    });
-    //} else {
-    //    res.send(req.session.user);
-    //}
+    user.email = req.body.email;
+    user.name = req.body.name;
+    user.state = req.body.state;
+    user.city = req.body.city;
+    user.address = req.body.address;
+    user.zipCode = req.body.zipCode;
+    user.password = req.body.password;
+
+    user.save(function(err){
+
+        if(err) {
+            if(err.code == 11000) {
+                res.json({success: false, message: 'A user with that email already exists'});
+            }
+            else {
+                res.send(err);
+            }
+        }
+
+        res.json({success: true, user: {email: req.body.email, password: req.body.password}, message: 'User created'});
+
+    });
+
+
 };
 
-exports.signup = function(req, res) {
+exports.login = function(req, res) {
+
+    User.findOne({
+        email: req.body.email
+    }, function(err, user){
+        if(err) throw err;
+
+        if(!user) {
+            res.json({
+                success: false,
+                message: 'Authentication failed. User not found.'
+            });
+        }
+        else if(user){
+            var validPassword = user.comparePassword(req.body.password);
+            if(!validPassword) {
+                res.json({
+                    success: false,
+                    message: 'Authentication failed. Wrong password'
+                });
+            }
+            else {
+                var token = jwt.sign({user: user}, config.secretToken, {expiresInMinutes: 1440});
+
+                res.json({
+                    success: true,
+                    message: 'Enjoy your token',
+                    user: user,
+                    token: token
+                });
+
+            }
+        }
+
+    });
+
+};
+
+exports.getUserInfo = function(req, res) {
+
+    res.json({
+        success: true,
+        user: req.decoded.user
+    });
 
 };

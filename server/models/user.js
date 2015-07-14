@@ -1,13 +1,13 @@
 var mongoose = require('mongoose');
-var crypto = require('crypto');
-var Schema = mongoose.Schema;
+var bcrypt = require('bcrypt-nodejs');
 
+var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
 
     email: {
         type: String,
-        unique: true,
+        index: { unique: true },
         required: '{PATH} is required!'
     },
     city: {
@@ -30,36 +30,40 @@ var UserSchema = new Schema({
         type: String,
         required: '{PATH} is required!'
     },
-    hashedPassword: {
-        type: String,
-        required: '{PATH} is required!'
-    },
-    salt: {
+    password: {
         type: String,
         required: '{PATH} is required!'
     },
     created_at: {
-        type: String,
-        default: Date.now()
+        type: Date,
+        default: Date.now
     }
-
-
 });
 
-UserSchema.methods.encryptPassword = function(password) {
-    return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
-};
+UserSchema.pre('save', function(next){
+    var user = this;
 
-UserSchema.methods.checkPassword = function(password) {
-    return this.encryptPassword(password) === this.hashedPassword;
+    if(!user.isModified('password')) {
+        console.log('modified password');
+        return next();
+    }
+
+    bcrypt.hash(user.password, null, null, function(err, hash){
+        if(err) {
+            return next(err);
+        }
+
+        user.password = hash;
+        next();
+    });
+});
+
+UserSchema.methods.comparePassword = function(password) {
+    var user = this;
+
+    return bcrypt.compareSync(password, user.password);
 };
 
 var User = mongoose.model('User', UserSchema);
 
-User.schema.path('email').validate(function(value){
-
-    return /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i.test(value);
-
-}, 'Invalid email');
-
-exports.User = User;
+module.exports.User = User;
